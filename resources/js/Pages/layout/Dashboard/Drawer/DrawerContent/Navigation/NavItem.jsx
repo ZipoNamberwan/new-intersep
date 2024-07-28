@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { forwardRef, useEffect } from 'react';
-import { Link, useLocation, matchPath } from 'react-router-dom';
+// import { Link, useLocation, matchPath } from 'react-router-dom';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -25,32 +25,32 @@ export default function NavItem({ item, level }) {
   if (item.target) {
     itemTarget = '_blank';
   }
-  let listItemProps = { component: forwardRef((props, ref) => <Link ref={ref} {...props} to={item.url} target={itemTarget} />) };
-  if (item?.external) {
-    listItemProps = { component: 'a', href: item.url, target: itemTarget };
-  }
+  // let listItemProps = { component: forwardRef((props, ref) => <Link ref={ref} {...props} to={item.url} target={itemTarget} />) };
+  // if (item?.external) {
+  //   listItemProps = { component: 'a', href: item.url, target: itemTarget };
+  // }
 
   const Icon = item.icon;
   const itemIcon = item.icon ? <Icon style={{ fontSize: drawerOpen ? '1rem' : '1.25rem' }} /> : false;
 
-  const { pathname } = useLocation();
-  const isSelected = !!matchPath({ path: item.url, end: false }, pathname) || openItem === item.id;
+  // const { pathname } = useLocation();
+  // const isSelected = !!matchPath({ path: item.url, end: false }, pathname) || openItem === item.id;
 
   // active menu item on page load
-  useEffect(() => {
-    if (pathname === item.url) handlerActiveItem(item.id);
-    // eslint-disable-next-line
-  }, [pathname]);
+  // useEffect(() => {
+  //   if (pathname === item.url) handlerActiveItem(item.id);
+  //   // eslint-disable-next-line
+  // }, [pathname]);
 
   const textColor = 'text.primary';
   const iconSelectedColor = 'primary.main';
 
   return (
     <ListItemButton
-      {...listItemProps}
+      // {...listItemProps}
       disabled={item.disabled}
       onClick={() => handlerActiveItem(item.id)}
-      selected={isSelected}
+      // selected={isSelected}
       sx={{
         zIndex: 1201,
         pl: drawerOpen ? `${level * 28}px` : 1.5,
@@ -86,7 +86,7 @@ export default function NavItem({ item, level }) {
         <ListItemIcon
           sx={{
             minWidth: 28,
-            color: isSelected ? iconSelectedColor : textColor,
+            // color: isSelected ? iconSelectedColor : textColor,
             ...(!drawerOpen && {
               borderRadius: 1.5,
               width: 36,
@@ -97,8 +97,8 @@ export default function NavItem({ item, level }) {
                 bgcolor: 'secondary.lighter'
               }
             }),
-            ...(!drawerOpen &&
-              isSelected && {
+            ...(!drawerOpen /* &&
+              isSelected */ && {
                 bgcolor: 'primary.lighter',
                 '&:hover': {
                   bgcolor: 'primary.lighter'
@@ -112,7 +112,7 @@ export default function NavItem({ item, level }) {
       {(drawerOpen || (!drawerOpen && level !== 1)) && (
         <ListItemText
           primary={
-            <Typography variant="h6" sx={{ color: isSelected ? iconSelectedColor : textColor }}>
+            <Typography variant="h6" sx={{ color: /* isSelected ? iconSelectedColor : */ textColor }}>
               {item.title}
             </Typography>
           }

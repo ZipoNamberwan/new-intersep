@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+// import { Link as RouterLink } from 'react-router-dom';
 
 // material-ui
 import Button from '@mui/material/Button';
@@ -22,7 +22,7 @@ import * as Yup from 'yup';
 import { Formik } from 'formik';
 
 // project import
-import AnimateButton from './components/@extended/AnimateButton';
+import AnimateButton from '../../../components/@extended/AnimateButton';
 
 // assets
 import EyeOutlined from '@ant-design/icons/EyeOutlined';
@@ -129,7 +129,7 @@ export default function AuthLogin({ isDemo = false }) {
                     }
                     label={<Typography variant="h6">Keep me sign in</Typography>}
                   />
-                  <Link variant="h6" component={RouterLink} color="text.primary">
+                  <Link variant="h6" /* component={RouterLink} */ color="text.primary">
                     Forgot Password?
                   </Link>
                 </Stack>
